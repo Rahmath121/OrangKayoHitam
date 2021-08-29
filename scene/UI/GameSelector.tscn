@@ -1,0 +1,160 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://asset/matching/assets/fonts/Nunito-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://asset/Scene_awal_game.png" type="Texture" id=2]
+[ext_resource path="res://scene/UI/GameSelector.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 49
+outline_size = 2
+outline_color = Color( 0.0470588, 0.0392157, 0.0392157, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.494118, 0.639216, 0.627451, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color( 0, 0, 0, 0.286275 )
+shadow_size = 5
+shadow_offset = Vector2( 5, 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="GameSelector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -216.0
+margin_top = 136.0
+margin_right = 151.0
+margin_bottom = 205.0
+custom_fonts/font = SubResource( 1 )
+text = "Pilih Permainan"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -520.0
+margin_top = -120.0
+margin_right = 520.0
+margin_bottom = 176.0
+custom_constants/hseparation = 30
+columns = 3
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="GridContainer"]
+margin_right = 326.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Button" type="Button" parent="GridContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Icon"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="GridContainer"]
+margin_left = 356.0
+margin_right = 682.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Button" type="Button" parent="GridContainer/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Icon"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="GridContainer"]
+margin_left = 712.0
+margin_right = 1038.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="Button" type="Button" parent="GridContainer/Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+text = "Icon"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GridContainer"]
+margin_top = 254.0
+margin_right = 326.0
+margin_bottom = 296.0
+custom_fonts/font = SubResource( 4 )
+text = "Hitung Gambar"
+align = 1
+
+[node name="Label2" type="Label" parent="GridContainer"]
+margin_left = 356.0
+margin_top = 254.0
+margin_right = 682.0
+margin_bottom = 296.0
+custom_fonts/font = SubResource( 4 )
+text = "Matching"
+align = 1
+
+[node name="Label3" type="Label" parent="GridContainer"]
+margin_left = 712.0
+margin_top = 254.0
+margin_right = 1038.0
+margin_bottom = 296.0
+custom_fonts/font = SubResource( 4 )
+text = "Puzzle"
+align = 1
+[connection signal="pressed" from="GridContainer/Panel/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GridContainer/Panel2/Button" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="GridContainer/Panel3/Button" to="." method="_on_Button3_pressed"]
