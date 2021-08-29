@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/02Prajurit_Scene6.wav-d52b96dc805f8f2d8e0ca42d3cf9509a.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene6/02Prajurit_Scene6.wav"
+dest_files=[ "res://.import/02Prajurit_Scene6.wav-d52b96dc805f8f2d8e0ca42d3cf9509a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
