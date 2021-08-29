@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/cerita/scene3/Scene_3.png" type="Texture" id=2]
+[ext_resource path="res://cerita/scene3/Scene3.gd" type="Script" id=3]
+[ext_resource path="res://asset/cerita/scene3/Narasi_Scene3.wav" type="AudioStream" id=4]
+[ext_resource path="res://cerita/font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://cerita/dialog.tres" type="DynamicFont" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "scene3"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("narasi:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 9.5, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "animation"
+}, {
+"args": [  ],
+"method": "dialog"
+} ]
+}
+
+[node name="Scene3" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="TextureRect" parent="Control" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="Control" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 688.0
+margin_top = 96.0
+margin_right = 1010.0
+margin_bottom = 221.0
+custom_fonts/font = ExtResource( 6 )
+text = "\"Sekarang engkau yang
+memimpin Kerajaan Melayu Jambi,
+jagalah negeri ini dengan Baik\"
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Control" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 448.0
+margin_top = 392.0
+margin_right = 699.0
+margin_bottom = 503.0
+custom_fonts/font = ExtResource( 6 )
+text = "\"Baik.. Perintah ayahanda, 
+ananda laksanakan\"
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" parent="Control" index="3"]
+margin_left = 16.0
+margin_top = 40.0
+margin_right = 592.0
+margin_bottom = 160.0
+
+[node name="Label" type="Label" parent="Control/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ketika anak-anaknya beranjak dewasa, 
+Tahta Kerajaan diturunkan ke anak tertua yaitu
+Orang Kayo Pingai."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+autoplay = "scene3"
+anims/scene3 = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Tween" type="Tween" parent="." index="4"]
