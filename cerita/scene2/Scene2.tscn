@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/cerita/scene2/scene_2.png" type="Texture" id=2]
+[ext_resource path="res://cerita/scene2/Scene2.gd" type="Script" id=3]
+[ext_resource path="res://asset/cerita/scene2/Narasi_Scene2.wav" type="AudioStream" id=4]
+[ext_resource path="res://cerita/font.tres" type="DynamicFont" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "play"
+length = 22.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("narasi:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 22 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "next"
+} ]
+}
+
+[node name="Scene2" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Control" parent="." index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="TextureRect" parent="Control" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
+
+[node name="Panel" parent="Control" index="1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 120.0
+margin_top = 32.0
+margin_right = 1144.0
+margin_bottom = 200.0
+
+[node name="Label" type="Label" parent="Control/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Putri selaras Pinang Masak dan Datuk Paduko Berhalo Dikaruniai 4 orang anak.
+anak pertama bernama orang Kayo Pingai, anak kedua bernama orang Kayo Kedataran, 
+anak ketiga bernama Orang Kayo Hitam, dan si bungsu bernama Orang Kayo Gemuk"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 4 )
+volume_db = -2.0
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+autoplay = "play"
+anims/play = SubResource( 1 )

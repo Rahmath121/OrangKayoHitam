@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/cerita/scene6/scene_6.png" type="Texture" id=2]
+[ext_resource path="res://cerita/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://asset/cerita/scene6/Narasi_Scene6_2.wav" type="AudioStream" id=4]
+[ext_resource path="res://cerita/scene6/Scene6.gd" type="Script" id=5]
+[ext_resource path="res://asset/cerita/scene6/03Mataram_Scene6.wav" type="AudioStream" id=6]
+[ext_resource path="res://asset/cerita/scene6/Narasi_Scene6.wav" type="AudioStream" id=7]
+[ext_resource path="res://cerita/dialog.tres" type="DynamicFont" id=8]
+[ext_resource path="res://asset/cerita/scene6/02Prajurit_Scene6.wav" type="AudioStream" id=9]
+[ext_resource path="res://asset/cerita/scene6/01Mataram_Scene6.wav" type="AudioStream" id=10]
+
+[node name="Scene6" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+
+[node name="TextureRect" parent="Control" index="0"]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 2 )
+
+[node name="dialog1" type="Label" parent="Control" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 552.0
+margin_top = 120.0
+margin_right = 1040.0
+margin_bottom = 208.0
+custom_fonts/font = ExtResource( 8 )
+text = "“Tangkap pemberontak dari kerajaan melayu Jambi”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog3" type="Label" parent="Control" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 616.0
+margin_top = 112.0
+margin_right = 937.0
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 8 )
+text = "“Arrrrgghhhh... beraninya mereka 
+melawan kerajaan mataram “"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog2" type="Label" parent="Control" index="3"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 192.0
+margin_top = 376.0
+margin_right = 668.0
+margin_bottom = 469.0
+custom_fonts/font = ExtResource( 8 )
+text = "“Ampun tuanku.. prajurit yang dikirim, 
+semuanya telah dikalahkan oleh orang kayo hitam 
+adik raja melayu jambi”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" parent="Control" index="4"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 464.0
+margin_bottom = 184.0
+
+[node name="narasi" type="Label" parent="Control/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Raja Mataram sangat marah
+mendengar berita kerajaan melayu 
+menghentikan pengiriman upeti."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi2" type="Label" parent="Control/Panel" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 5.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Raja mataram mengirim pasukan 
+untuk menangkap orang kayo hitam.
+Namun usahanya sia-sia. 
+Orang kayo hitam amat sakti."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi1" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 7 )
+
+[node name="narasi2" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 4 )
+
+[node name="dialog1" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 10 )
+
+[node name="dialog2" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 9 )
+
+[node name="dialog3" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 6 )
+
+[node name="Tween" type="Tween" parent="." index="6"]
+[connection signal="finished" from="narasi1" to="." method="_on_narasi1_finished"]
+[connection signal="finished" from="narasi2" to="." method="_on_narasi2_finished"]
+[connection signal="finished" from="dialog1" to="." method="_on_dialog1_finished"]
+[connection signal="finished" from="dialog2" to="." method="_on_dialog2_finished"]
+[connection signal="finished" from="dialog3" to="." method="_on_dialog3_finished"]
