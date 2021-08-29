@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="piece" type="KinematicBody2D"]
+input_pickable = true
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

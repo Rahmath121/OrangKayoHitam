@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://asset/puzzle/puzzle6/4.png" type="Texture" id=1]
+[ext_resource path="res://scene/puzzle/piece.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scene/puzzle/4 puzzle/piece4.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 55.681, 54.8108 )
+
+[node name="piece4" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 3.85034, 137.031, 796.149, 401.933 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -77.907, 38.1074 )
+shape = SubResource( 1 )
+[connection signal="input_event" from="." to="." method="_on_piece4_input_event"]
