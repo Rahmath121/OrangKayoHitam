@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/cerita/scene9/scene_9.png" type="Texture" id=2]
+[ext_resource path="res://cerita/scene9/Scene9.gd" type="Script" id=3]
+[ext_resource path="res://asset/cerita/scene9/Narasi_Scene9.wav" type="AudioStream" id=4]
+[ext_resource path="res://cerita/font.tres" type="DynamicFont" id=5]
+
+[node name="Scene9" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="TextureRect" parent="Control" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Panel" parent="Control" index="1"]
+margin_left = 232.0
+margin_top = 24.0
+margin_right = 1072.0
+margin_bottom = 176.0
+
+[node name="Label" type="Label" parent="Control/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pertempuran antara orang kayo hitam dan mpu pembuat keris terjadi. 
+Mpu pembuat keris tidak mampu menahan jurus sakti orang kayo hitam.
+Pasukan kerajaan mataram datang mengepung orang kayo hitam, 
+satu persatu pasukan berguguran."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 4 )
+autoplay = true

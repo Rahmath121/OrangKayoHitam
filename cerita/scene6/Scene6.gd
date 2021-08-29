@@ -41,4 +41,4 @@ func _on_dialog2_finished():
 
 
 func _on_dialog3_finished():
-	Change.change_scene("res://MainMenu.tscn")
+	Change.change_scene("res://cerita/scene7/Scene7.tscn")
