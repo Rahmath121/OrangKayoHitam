@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Narasi_Scene2.wav-65a343e05ce24603b9e251028fc33495.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene2/Narasi_Scene2.wav"
+dest_files=[ "res://.import/Narasi_Scene2.wav-65a343e05ce24603b9e251028fc33495.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

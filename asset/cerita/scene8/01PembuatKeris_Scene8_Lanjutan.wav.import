@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/01PembuatKeris_Scene8_Lanjutan.wav-e0146004ce020526e035575f99b0fac1.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene8/01PembuatKeris_Scene8_Lanjutan.wav"
+dest_files=[ "res://.import/01PembuatKeris_Scene8_Lanjutan.wav-e0146004ce020526e035575f99b0fac1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

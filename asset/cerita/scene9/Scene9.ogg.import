@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Scene9.ogg-6fbde8ce5322739deffd7e224d45c277.oggstr"
+
+[deps]
+
+source_file="res://asset/cerita/scene9/Scene9.ogg"
+dest_files=[ "res://.import/Scene9.ogg-6fbde8ce5322739deffd7e224d45c277.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

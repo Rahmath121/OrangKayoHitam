@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/03Rakyat_Scene5.wav-f724f30d35afdbbee0c9d68429e91fa5.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene5/03Rakyat_Scene5.wav"
+dest_files=[ "res://.import/03Rakyat_Scene5.wav-f724f30d35afdbbee0c9d68429e91fa5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

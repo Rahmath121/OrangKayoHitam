@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Narasi_Scene5_Lanjutan.wav-644404ee240123f1c87525c2992379ae.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene5/Narasi_Scene5_Lanjutan.wav"
+dest_files=[ "res://.import/Narasi_Scene5_Lanjutan.wav-644404ee240123f1c87525c2992379ae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

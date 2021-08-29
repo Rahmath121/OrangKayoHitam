@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/01Berhalo_Scene3.wav-262fdd5cf3c11a100c2d5aa27d90b138.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene3/01Berhalo_Scene3.wav"
+dest_files=[ "res://.import/01Berhalo_Scene3.wav-262fdd5cf3c11a100c2d5aa27d90b138.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
