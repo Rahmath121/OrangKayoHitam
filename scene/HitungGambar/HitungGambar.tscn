@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://asset/matching/assets/fonts/Nunito-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scene/HitungGambar/HitungGambar.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scene/UI/change.tscn" type="PackedScene" id=8]
 [ext_resource path="res://asset/button/quit.png" type="Texture" id=9]
 [ext_resource path="res://asset/matching/assets/fonts/Nunito-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://asset/audio/permainan hitung gambar.wav" type="AudioStream" id=11]
 
 [sub_resource type="Theme" id=1]
 Panel/styles/panel = null
@@ -397,7 +398,6 @@ margin_top = -40.0
 margin_right = 640.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 7 )
-text = "Pertanyaan"
 align = 1
 valign = 1
 autowrap = true
@@ -587,6 +587,8 @@ margin_left = -392.0
 margin_top = 176.0
 margin_right = -202.0
 margin_bottom = -64.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 95, 240 )
 theme = SubResource( 11 )
 custom_constants/vseparation = 20
 __meta__ = {
@@ -671,10 +673,17 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+
+[node name="start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="GridContainer2/Panel/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="GridContainer2/Panel2/Button" to="." method="_on_Button1_pressed"]
 [connection signal="pressed" from="GridContainer2/Panel3/Button" to="." method="_on_Button2_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="start" to="." method="_on_start_finished"]
 
 [editable path="chage"]

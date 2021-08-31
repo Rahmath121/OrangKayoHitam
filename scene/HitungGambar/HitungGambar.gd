@@ -7,8 +7,16 @@ var pedati = preload("res://asset/hitung_gambar/gambar-1-4.png")
 var kelapa = preload("res://asset/hitung_gambar/gambar-1-5.png")
 var keris = preload("res://asset/matching_gambar/keris.png")
 
-var gambar = [kapal, karung, padi, pedati, kelapa, keris]
+var gambar = [kapal, karung, padi, pedati, kelapa]
 var jawaban = []
+
+
+var audio_karung = load("res://asset/audio/hitunggambar/drive-download-20210814T135005Z-001/Karung.wav")
+var audio_padi = load("res://asset/audio/hitunggambar/drive-download-20210814T135005Z-001/Padi.wav")
+var audio_pedati = load("res://asset/audio/hitunggambar/drive-download-20210814T135005Z-001/Pedati.wav")
+var audio_perahu = load("res://asset/audio/hitunggambar/drive-download-20210814T135005Z-001/Perahu.wav")
+var audio_kelapa = load("res://asset/audio/hitunggambar/drive-download-20210814T135005Z-001/Pohon Kelapa.wav")
+
 onready var button1 = $GridContainer/Panel/TextureButton
 onready var button2 = $GridContainer/Panel2/TextureButton
 onready var button3 = $GridContainer/Panel3/TextureButton
@@ -37,31 +45,44 @@ var salah = 0
 func _ready():
 	randomize()
 	hitung_gambar = randi() % 8 + 1
-	pilih_gambar = randi() % 6
+	pilih_gambar = randi() % 5
 	Button_jawaban()
 	total_gambar()
 	texture()
 	jumlah_gambar()
-	Pilih_gambar()
+	
+	
 	$chage/AnimationPlayer.play("open")
 	yield($chage/AnimationPlayer,"animation_finished")
-	$Timer.start()
-	appear()
 	
+	appear($GridContainer)
+	appear($GridContainer2)
 	
 func Pilih_gambar():
+	var start = false
 	if pilih_gambar == 0:	
-		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Kapal?")	
+		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Perahu?")
+		$sfx.stream = audio_perahu
 	if pilih_gambar == 1:	
 		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Karung?")		
+		$sfx.stream = audio_karung
 	if pilih_gambar == 2:	
 		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Padi?")		
+		$sfx.stream = audio_padi
 	if pilih_gambar == 3:	
 		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Pedati?")
+		$sfx.stream = audio_pedati
 	if pilih_gambar == 4:	
 		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Pohon Kelapa?")		
-	if pilih_gambar == 5:	
-		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah keris?")	
+		$sfx.stream = audio_kelapa
+	
+	
+	if start == false:
+		yield(get_tree().create_timer(1),"timeout")
+		$sfx.play()
+		start = true
+	else:
+		$sfx.play()	
 func Button_jawaban():
 	jawaban.append($GridContainer2/Panel/Button)
 	jawaban.append($GridContainer2/Panel2/Button)
@@ -122,7 +143,7 @@ func jumlah_gambar():
 		
 func hapus_gambar():
 	hitung_gambar = randi() % 8 + 1
-	pilih_gambar = randi() % 6
+	pilih_gambar = randi() % 5
 	var c = 0
 	while c < button.size():
 		button_text = button[c]
@@ -224,7 +245,16 @@ func _on_TextureButton_pressed():
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainMenu.tscn")
 
-func appear():
-	$Tween.interpolate_property($GridContainer, "rect_scale", Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_BACK, Tween.EASE_OUT)  
+func appear(lokasi):
+	
+	$Tween.interpolate_property(lokasi, "rect_scale", Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_BACK, Tween.EASE_OUT)  
 	$Tween.start()
 
+func efeect():
+	$sfx2.stream = load("res://asset/audio/Cartoon Sound Effects - Bloop.wav")
+	$sfx2.play()
+
+
+func _on_start_finished():
+	$Timer.start()
+	Pilih_gambar()
