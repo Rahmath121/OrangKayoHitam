@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/cerita/scene11/Scene_11.png" type="Texture" id=2]
+[ext_resource path="res://asset/cerita/scene11/Narasi_Scene11.wav" type="AudioStream" id=3]
+[ext_resource path="res://cerita/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://cerita/scene11/Scene11.gd" type="Script" id=5]
+
+[node name="Scene11" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+
+[node name="TextureRect" parent="Control" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Panel" parent="Control" index="1"]
+margin_left = 248.0
+margin_top = 24.0
+margin_right = 1096.0
+margin_bottom = 144.0
+
+[node name="Label" type="Label" parent="Control/Panel" index="0"]
+margin_right = 835.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Saat acara penobatan, keris pemberian raja mataram digunakan untuk 
+mengikat rambut orang kayo hitam. Orang kayo hitam juga ditawarkan 
+untuk menjadi wakil kerajaan mataram. "
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Panel" index="1"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 835.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Namun, orang kayo hitam lebih memilih untuk 
+kembali ke kerajaan melayu jambi."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 3 )
+autoplay = true
+
+[node name="Tween" type="Tween" parent="." index="2"]
+[connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]

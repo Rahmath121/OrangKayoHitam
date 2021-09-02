@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
+[ext_resource path="res://asset/cerita/scene10/Scene_10.png" type="Texture" id=2]
+[ext_resource path="res://cerita/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://asset/cerita/scene10/Narasi_Scene10.wav" type="AudioStream" id=4]
+[ext_resource path="res://cerita/dialog.tres" type="DynamicFont" id=5]
+[ext_resource path="res://cerita/scene10/Scene10.gd" type="Script" id=6]
+[ext_resource path="res://asset/cerita/scene10/02Hitam_Scene10.wav" type="AudioStream" id=7]
+[ext_resource path="res://asset/cerita/scene10/01Mataram_Scene10.wav" type="AudioStream" id=8]
+[ext_resource path="res://asset/cerita/scene10/03Mataram_Scene10.wav" type="AudioStream" id=9]
+
+[node name="Scene10" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+
+[node name="TextureRect" parent="Control" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Panel" parent="Control" index="1"]
+margin_left = 208.0
+margin_top = 32.0
+margin_right = 1120.0
+margin_bottom = 152.0
+
+[node name="narasi" type="Label" parent="Control/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Mendengar berita kekalahan pasukan kerajaan mataram dan kesaktian 
+orang kayo hitam. Raja mataram akhirnya mengundang orang kayo hitam 
+ke istana kerajaan mataram untuk mendengar keinginan orang kayo hitam. "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog1" type="Label" parent="Control" index="2"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 56.0
+margin_top = 240.0
+margin_right = 433.0
+margin_bottom = 301.0
+custom_fonts/font = ExtResource( 5 )
+text = "“Engkau sangat sakti orang kayo hitam, 
+katakan apa keinginanmu”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog2" type="Label" parent="Control" index="3"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 864.0
+margin_top = 216.0
+margin_right = 1252.0
+margin_bottom = 309.0
+custom_fonts/font = ExtResource( 5 )
+text = "“Aku tidak ingin ada pertempuran antara 
+kerajaan melayu jambi dan mataram, Namun-\" 
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog3" type="Label" parent="Control" index="4"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 880.0
+margin_top = 216.0
+margin_right = 1268.0
+margin_bottom = 373.0
+custom_fonts/font = ExtResource( 5 )
+text = "\"upeti yang paduka tetapkan 
+sangat menyengsarakan rakyat 
+kerajaan melayu jambi.
+Aku tidak ingin rakyat ku menderita.\"
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog4" type="Label" parent="Control" index="5"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 880.0
+margin_top = 216.0
+margin_right = 1205.0
+margin_bottom = 373.0
+custom_fonts/font = ExtResource( 5 )
+text = "\"Aku tidak ingin paduka mengusik 
+kerajaan melayu jambi.
+
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog5" type="Label" parent="Control" index="6"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 72.0
+margin_top = 224.0
+margin_right = 441.0
+margin_bottom = 317.0
+custom_fonts/font = ExtResource( 5 )
+text = "\"Melihat kesaktian mu, aku tak mampu 
+melawan, aku memutuskan berdamai, 
+dan menghapus upeti\". "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog6" type="Label" parent="Control" index="7"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 144.0
+margin_top = 232.0
+margin_right = 513.0
+margin_bottom = 325.0
+custom_fonts/font = ExtResource( 5 )
+text = "\"Keris ini ku berikan kepada mu 
+sebagai tanda janji ku.”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="dialog" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 8 )
+
+[node name="dialog2" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 7 )
+
+[node name="dialog3" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 9 )
+
+[node name="Tween" type="Tween" parent="." index="5"]
+[connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
+[connection signal="finished" from="dialog" to="." method="_on_dialog_finished"]
+[connection signal="finished" from="dialog2" to="." method="_on_dialog2_finished"]
+[connection signal="finished" from="dialog3" to="." method="_on_dialog3_finished"]

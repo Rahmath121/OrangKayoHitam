@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
-[ext_resource path="res://asset/cerita/scene6/scene_6.png" type="Texture" id=2]
+[ext_resource path="res://asset/cerita/scene6/Scene_6.png" type="Texture" id=2]
 [ext_resource path="res://cerita/font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://asset/cerita/scene6/Narasi_Scene6_2.wav" type="AudioStream" id=4]
 [ext_resource path="res://cerita/scene6/Scene6.gd" type="Script" id=5]
@@ -21,22 +21,23 @@ texture = ExtResource( 2 )
 
 [node name="dialog1" type="Label" parent="Control" index="1"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 552.0
-margin_top = 120.0
-margin_right = 1040.0
-margin_bottom = 208.0
+margin_left = 840.0
+margin_top = 312.0
+margin_right = 1102.0
+margin_bottom = 400.0
 custom_fonts/font = ExtResource( 8 )
-text = "“Tangkap pemberontak dari kerajaan melayu Jambi”"
+text = "“Tangkap pemberontak 
+dari kerajaan melayu Jambi”"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="dialog3" type="Label" parent="Control" index="2"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 616.0
-margin_top = 112.0
-margin_right = 937.0
-margin_bottom = 200.0
+margin_left = 840.0
+margin_top = 320.0
+margin_right = 1161.0
+margin_bottom = 408.0
 custom_fonts/font = ExtResource( 8 )
 text = "“Arrrrgghhhh... beraninya mereka 
 melawan kerajaan mataram “"
@@ -46,10 +47,10 @@ __meta__ = {
 
 [node name="dialog2" type="Label" parent="Control" index="3"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 192.0
-margin_top = 376.0
-margin_right = 668.0
-margin_bottom = 469.0
+margin_left = 104.0
+margin_top = 416.0
+margin_right = 580.0
+margin_bottom = 509.0
 custom_fonts/font = ExtResource( 8 )
 text = "“Ampun tuanku.. prajurit yang dikirim, 
 semuanya telah dikalahkan oleh orang kayo hitam 
