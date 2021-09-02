@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pilih jumlah puzzle.wav-5234a7594d50fca86fc504ed4eb0776f.sample"
+
+[deps]
+
+source_file="res://asset/audio/pilih jumlah puzzle.wav"
+dest_files=[ "res://.import/pilih jumlah puzzle.wav-5234a7594d50fca86fc504ed4eb0776f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

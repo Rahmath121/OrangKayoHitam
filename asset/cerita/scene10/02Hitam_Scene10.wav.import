@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/02Hitam_Scene10.wav-ff746155543f02d9685fcece5ef24d50.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene10/02Hitam_Scene10.wav"
+dest_files=[ "res://.import/02Hitam_Scene10.wav-ff746155543f02d9685fcece5ef24d50.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

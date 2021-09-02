@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Narasi_Scene11.wav-b9caf7a2cd740dc6c29c0953741087d3.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene11/Narasi_Scene11.wav"
+dest_files=[ "res://.import/Narasi_Scene11.wav-b9caf7a2cd740dc6c29c0953741087d3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Perahu.wav-39468209d8bda72d3b1d5bbd506d309d.sample"
+
+[deps]
+
+source_file="res://asset/audio/hitunggambar/drive-download-20210814T135005Z-001/Perahu.wav"
+dest_files=[ "res://.import/Perahu.wav-39468209d8bda72d3b1d5bbd506d309d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

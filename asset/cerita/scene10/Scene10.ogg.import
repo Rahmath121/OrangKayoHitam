@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Scene10.ogg-7d6c29d4b7bc617ac7e22764a8efcd34.oggstr"
+
+[deps]
+
+source_file="res://asset/cerita/scene10/Scene10.ogg"
+dest_files=[ "res://.import/Scene10.ogg-7d6c29d4b7bc617ac7e22764a8efcd34.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

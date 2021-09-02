@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/01Mataram_Scene10.wav-053400c33d74c407c52fc2a1aaad7861.sample"
+
+[deps]
+
+source_file="res://asset/cerita/scene10/01Mataram_Scene10.wav"
+dest_files=[ "res://.import/01Mataram_Scene10.wav-053400c33d74c407c52fc2a1aaad7861.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
