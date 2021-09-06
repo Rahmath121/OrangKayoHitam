@@ -36,3 +36,4 @@ __meta__ = {
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 4 )
 autoplay = true
+[connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
