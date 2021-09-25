@@ -259,6 +259,7 @@ func _on_piece3_lepas():
 func _on_puzzle4_body_entered(body):
 	if body.value == $areaPuzzle/puzzle4.value:
 		posisi4 = true
+# warning-ignore:unused_argument
 func _on_puzzle4_body_exited(body):
 	posisi4 = false
 func _on_piece4_lepas():
@@ -290,6 +291,7 @@ func _on_puzzle5_body_entered(body):
 		posisi5 = true
 
 
+# warning-ignore:unused_argument
 func _on_puzzle5_body_exited(body):
 	posisi5 = false
 
@@ -312,6 +314,7 @@ func _on_puzzle6_body_entered(body):
 	if body.value == $areaPuzzle/puzzle6.value:
 		posisi6 = true
 
+# warning-ignore:unused_argument
 func _on_puzzle6_body_exited(body):
 	posisi6 = false
 func _on_piece6_lepas():

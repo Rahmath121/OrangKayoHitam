@@ -3,8 +3,6 @@
 [ext_resource path="res://asset/hitung_gambar/gambar-1-1.png" type="Texture" id=1]
 [ext_resource path="res://scene/Matching/Panel.gd" type="Script" id=2]
 
-
-
 [node name="Panel" type="Panel"]
 margin_right = 40.0
 margin_bottom = 40.0

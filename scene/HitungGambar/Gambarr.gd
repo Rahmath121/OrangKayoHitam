@@ -12,8 +12,10 @@ var tween_out = Tween.new()
 var ukuran_x = rect_size.x
 var ukuran_y
 var gambar_belakang = preload("res://asset/matching_gambar/kartu_game_HITUNG.png")
+
+var audio = AudioStreamPlayer.new()
 func _ready():
-	
+	add_child(audio)
 	add_child(tween_in)
 	add_child(tween_out)
 	set_h_size_flags(3)
@@ -21,8 +23,9 @@ func _ready():
 	set_expand(true)
 	set_stretch_mode(TextureButton.STRETCH_KEEP_ASPECT_CENTERED)
 	set_anchors_preset(15, true)
-
-	
+	disabled = true
+	audio.stream = load("res://asset/audio/matching/Card-flip-sound-effect.wav")
+	audio.volume_db = -10
 	
 	matching = get_tree().root.get_node("MatchingGambar")
 	
@@ -42,7 +45,7 @@ func flip():
 		set_normal_texture(depan)	
 	else:
 		set_normal_texture(belakang)
-		
+	audio.play()	
 func animation_out():	
 	tween_out.interpolate_property(self, "rect_scale", Vector2(0,1), Vector2(1, 1), 0.2,Tween.TRANS_LINEAR , Tween.EASE_OUT)
 	tween_out.start()

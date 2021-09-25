@@ -1,8 +1,22 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scene/Matching/MatchingGambar.gd" type="Script" id=1]
 [ext_resource path="res://asset/matching_gambar/bck_game_tebak_gambar.png" type="Texture" id=2]
-[ext_resource path="res://asset/matching/assets/fonts/Nunito-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://asset/audio/UI/Kalah.wav" type="AudioStream" id=3]
+[ext_resource path="res://asset/audio/UI/Menang.wav" type="AudioStream" id=4]
+[ext_resource path="res://asset/button/quit.png" type="Texture" id=5]
+[ext_resource path="res://asset/matching/assets/fonts/Nunito-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://asset/matching/assets/fonts/Nunito-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://asset/audio/UI/Tepuk tangan.wav" type="AudioStream" id=8]
+[ext_resource path="res://asset/audio/temukan gambar yg sama.wav" type="AudioStream" id=9]
+[ext_resource path="res://asset/audio/UI/Kartu muncul.wav" type="AudioStream" id=10]
+[ext_resource path="res://asset/ui/ribbon.png" type="Texture" id=11]
+[ext_resource path="res://asset/ui/base.png" type="Texture" id=12]
+[ext_resource path="res://asset/ui/star2.png" type="Texture" id=13]
+[ext_resource path="res://asset/ui/star1.png" type="Texture" id=14]
+[ext_resource path="res://asset/button/repeat.png" type="Texture" id=15]
+[ext_resource path="res://scene/UI/EXIT.tscn" type="PackedScene" id=16]
+[ext_resource path="res://asset/button/PAUSE.png" type="Texture" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.564706, 0.733333, 0.478431, 0.572549 )
@@ -18,9 +32,59 @@ shadow_offset = Vector2( 15, 15 )
 [sub_resource type="Theme" id=2]
 Panel/styles/panel = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 50
-font_data = ExtResource( 3 )
+[sub_resource type="Theme" id=3]
+Panel/styles/panel = null
+
+[sub_resource type="StyleBoxFlat" id=4]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id=5]
+Panel/styles/panel = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 70
+font_data = ExtResource( 7 )
+
+[sub_resource type="Theme" id=8]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.52549, 0.905882, 0.458824, 0.886275 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=10]
+size = 60
+font_data = ExtResource( 7 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.145098, 0.792157, 0.337255, 0.607843 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=12]
+size = 70
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 7 )
 
 [node name="MatchingGambar" type="Control"]
 anchor_right = 1.0
@@ -55,6 +119,7 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/vseparation = 20
@@ -64,14 +129,308 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
+[node name="benar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -12.0
+
+[node name="salah" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
-margin_left = 400.0
-margin_right = -332.0
-margin_bottom = 77.0
-custom_fonts/font = SubResource( 3 )
-text = "reset"
+margin_bottom = 128.0
+theme = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 350
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+pause_mode = 2
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_right = 140.0
+margin_bottom = 62.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
+margin_left = 490.0
+margin_right = 790.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+theme = SubResource( 5 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 6 )
+text = "0 : 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+pause_mode = 2
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_left = 1140.0
+margin_right = 1280.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 66.0
+margin_right = 1280.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.0
+margin_top = -48.0
+margin_right = 220.0
+margin_bottom = 48.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 220, 48 )
+custom_fonts/font = SubResource( 7 )
+text = "Game Selesai"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -298.0
+margin_top = -97.5
+margin_right = 298.0
+margin_bottom = 97.5
+rect_pivot_offset = Vector2( 220, 48 )
+custom_fonts/font = SubResource( 7 )
+text = "Temukan Gambar 
+Yang Sama"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="kartumuncul" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 1308.0
+margin_bottom = 768.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Selesai" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -227.0
+margin_top = -257.0
+margin_right = 277.0
+margin_bottom = 285.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 252, 271 )
+theme = SubResource( 8 )
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ribbon" type="Sprite" parent="Selesai"]
+position = Vector2( 257.514, -18.728 )
+texture = ExtResource( 11 )
+
+[node name="Label3" type="Label" parent="Selesai/ribbon"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -656.9
+margin_top = -164.165
+margin_right = -198.9
+margin_bottom = -81.1647
+custom_fonts/font = SubResource( 10 )
+text = "Game Selesai"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Selesai"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -169.0
+margin_top = -246.0
+margin_right = 322.0
+margin_bottom = -6.0
+rect_scale = Vector2( 0.7, 0.7 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="star1" type="Sprite" parent="Selesai/TextureRect2"]
+position = Vector2( 80, 160 )
+texture = ExtResource( 14 )
+
+[node name="star3" type="Sprite" parent="Selesai/TextureRect2"]
+position = Vector2( 402.405, 160.802 )
+texture = ExtResource( 14 )
+
+[node name="star2" type="Sprite" parent="Selesai/TextureRect2"]
+position = Vector2( 240, 114.286 )
+texture = ExtResource( 13 )
+
+[node name="Panel" type="Panel" parent="Selesai"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = -56.0
+margin_right = 228.0
+margin_bottom = 173.0
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Selesai/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Selesai/Panel/VBoxContainer"]
+margin_top = 29.0
+margin_right = 458.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 10 )
+text = "Waktu Selesai"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="Selesai/Panel/VBoxContainer"]
+margin_top = 116.0
+margin_right = 458.0
+margin_bottom = 199.0
+custom_fonts/font = SubResource( 10 )
+align = 1
+valign = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Selesai"]
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_left = 51.0
+margin_top = 457.0
+margin_right = 241.0
+margin_bottom = 587.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restart" type="TextureButton" parent="Selesai"]
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_left = 283.0
+margin_top = 457.0
+margin_right = 473.0
+margin_bottom = 587.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EXIT" parent="." instance=ExtResource( 16 )]
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.4
+
+[node name="paused" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -98.5
+margin_top = -48.0
+margin_right = 98.5
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 12 )
+text = "Pause"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="start" to="." method="_on_start_finished"]
+[connection signal="pressed" from="Selesai/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="Selesai/restart" to="." method="_on_restart_pressed"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

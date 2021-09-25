@@ -18,6 +18,8 @@ func _process(delta):
 	
 
 
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
 func _on_piece5_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		can_grab = event.pressed

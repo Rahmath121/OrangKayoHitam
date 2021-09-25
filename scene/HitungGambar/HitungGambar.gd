@@ -42,7 +42,11 @@ var detik = 0
 var jumlah_game = 0
 var benar = 0
 var salah = 0
+
+
+
 func _ready():
+	disabled()
 	randomize()
 	hitung_gambar = randi() % 8 + 1
 	pilih_gambar = randi() % 5
@@ -76,13 +80,13 @@ func Pilih_gambar():
 		$VBoxContainer/HBoxContainer2/Panel/Label.text = str("Berapakah Jumlah Pohon Kelapa?")		
 		$sfx.stream = audio_kelapa
 	
-	
-	if start == false:
-		yield(get_tree().create_timer(1),"timeout")
-		$sfx.play()
-		start = true
-	else:
-		$sfx.play()	
+	if jumlah_game<10:
+		if start == false:
+			yield(get_tree().create_timer(1),"timeout")
+			$sfx.play()
+			start = true
+		else:
+			$sfx.play()	
 func Button_jawaban():
 	jawaban.append($GridContainer2/Panel/Button)
 	jawaban.append($GridContainer2/Panel2/Button)
@@ -140,6 +144,7 @@ func jumlah_gambar():
 		button_jawaban.nilai = hitung_gambar		
 		
 
+
 		
 func hapus_gambar():
 	hitung_gambar = randi() % 8 + 1
@@ -168,60 +173,95 @@ func hapus_gambar():
 
 func _on_Button_pressed():
 	if $GridContainer2/Panel/Button.nilai == hitung_gambar:
-		disabled()
-		hapus_gambar()
-		jumlah_game += 1
-		benar += 1
-		$AnimationPlayer.play("appear")
-	else:
-		$AnimationPlayer.play("appear")
-		disabled()
-		hapus_gambar()
-		jumlah_game += 1
-		salah += 1
+		
 	
-	if jumlah_game == 10:
-		$AnimationPlayer.play("GameSelesai")
-		disabled()
-		$Timer.stop()
+	
+		if jumlah_game < 10:
+			$benar.play()
+			Benar()
+			jumlah_game += 1
+			disabled()
+			hapus_gambar()
+			benar += 1
+			
+			$AnimationPlayer.play("appear")
+	else:
+		
+		
+		if jumlah_game < 10:
+			$salah.play()
+			Salah()
+			jumlah_game += 1
+			
+			disabled()
+			hapus_gambar()
+			$AnimationPlayer.play("appear")
+			
+			salah += 1
+			
+	
 func _on_Button1_pressed():
 	if $GridContainer2/Panel2/Button.nilai == hitung_gambar:
-		disabled()
-		hapus_gambar()
-		jumlah_game += 1
-		benar += 1
-		$AnimationPlayer.play("appear")
+
+		
+		
+		if jumlah_game < 10:
+			$benar.play()
+			Benar()
+			jumlah_game += 1
+			
+			disabled()
+			hapus_gambar()
+			benar += 1
+			$AnimationPlayer.play("appear")
 	else:
-		disabled()
-		hapus_gambar()
-		$AnimationPlayer.play("appear")
-		salah += 1
-		jumlah_game += 1
-	
-	if jumlah_game == 10:
-		$AnimationPlayer.play("GameSelesai")
-		disabled()
-		$Timer.stop()
+		
+		
+		if jumlah_game < 10:
+			$salah.play()
+			Salah()
+			jumlah_game += 1
+			disabled()
+			hapus_gambar()
+			$AnimationPlayer.play("appear")
+			
+			salah += 1
+			
+		
+
 	
 func _on_Button2_pressed():
 	
 	if $GridContainer2/Panel3/Button.nilai == hitung_gambar:
-		disabled()
-		hapus_gambar()
-		jumlah_game += 1
-		benar += 1
-		$AnimationPlayer.play("appear")
-	else:
-		disabled()
-		hapus_gambar()
-		$AnimationPlayer.play("appear")
-		salah += 1
-		jumlah_game += 1
 		
-	if jumlah_game == 10:
-		$AnimationPlayer.play("GameSelesai")
-		disabled()
-		$Timer.stop()
+	
+	
+		if jumlah_game < 10:
+			$benar.play()
+			Benar()
+			jumlah_game += 1
+			disabled()
+			hapus_gambar()
+			
+			benar += 1
+			
+			$AnimationPlayer.play("appear")
+	else:
+		
+		
+		if jumlah_game < 10:
+			$salah.play()
+			Salah()
+			jumlah_game += 1
+			
+			disabled()
+			hapus_gambar()
+			$AnimationPlayer.play("appear")
+			
+			salah += 1
+			
+			
+	
 func _on_Timer_timeout():
 	detik += 1
 	if detik > 59:
@@ -242,6 +282,8 @@ func disabled():
 
 
 func _on_TextureButton_pressed():
+	if get_tree().paused == true:
+		get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainMenu.tscn")
 
@@ -250,11 +292,59 @@ func appear(lokasi):
 	$Tween.interpolate_property(lokasi, "rect_scale", Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_BACK, Tween.EASE_OUT)  
 	$Tween.start()
 
-func efeect():
-	$sfx2.stream = load("res://asset/audio/Cartoon Sound Effects - Bloop.wav")
-	$sfx2.play()
+
 
 
 func _on_start_finished():
+	enable()
 	$Timer.start()
 	Pilih_gambar()
+
+
+func Benar():
+	$Tween2.interpolate_property($benar2, "rect_scale", Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_BACK, Tween.EASE_OUT)  
+	$Tween2.start()
+	yield($Tween2,"tween_completed")
+	$benar2.rect_scale = Vector2(0,0)
+	if jumlah_game == 10:
+		complete()
+func Salah():
+	$Tween2.interpolate_property($benar3, "rect_scale", Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_BACK, Tween.EASE_OUT)  
+	$Tween2.start()
+	yield($Tween2,"tween_completed")
+	$benar3.rect_scale = Vector2(0,0)
+	if jumlah_game == 10:
+		complete()
+func selesai():
+	$Tween2.interpolate_property($Selesai, "rect_scale", Vector2(0,0), Vector2(1, 1), 0.5, Tween.TRANS_BACK, Tween.EASE_OUT)  
+	$Tween2.start()
+	$Selesai/Panel/VBoxContainer/Label.text = "Benar : " + str(benar)
+	$Selesai/Panel/VBoxContainer/Label2.text = "Salah : " + str(salah)
+func complete():
+	
+		$AnimationPlayer.play("GameSelesai")
+		disabled()
+		$Timer.stop()
+		$sfx.stream = load("res://asset/audio/UI/Tepuk tangan.wav")
+		$sfx.play()
+
+
+
+
+func _on_restart_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().reload_current_scene()
+
+
+func _on_TextureButton2_pressed():
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://MainMenu.tscn")
+
+
+func _on_TextureButton3_pressed():
+	if get_tree().paused == false:
+		get_tree().paused = true
+		$paused.visible = true
+	else:
+		get_tree().paused = false
+		$paused.visible = false
