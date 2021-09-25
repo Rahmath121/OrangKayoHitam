@@ -41,6 +41,7 @@ margin_top = 240.0
 margin_right = 474.0
 margin_bottom = 368.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.917647, 0.0588235, 0.0588235, 1 )
 text = "“Ampun tuanku, orang kayo hitam 
 hanya bisa dikalahkan dengan sebuah keris 
 yang terbuat dari logam yang berawal Pa”"
@@ -55,6 +56,7 @@ margin_top = 224.0
 margin_right = 1148.0
 margin_bottom = 285.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.152941, 0.584314, 0.717647, 1 )
 text = "“ Sekarang pergilah, 
 segera buat keris tersebut” "
 __meta__ = {
@@ -68,6 +70,7 @@ margin_top = 224.0
 margin_right = 1338.0
 margin_bottom = 285.0
 custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.137255, 0.54902, 0.588235, 1 )
 text = "“Ha..ha..ha...
 akan ku taklukan Orang kayo hitam”"
 __meta__ = {
@@ -76,7 +79,6 @@ __meta__ = {
 
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 5 )
-autoplay = true
 
 [node name="dialog" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 3 )
@@ -85,6 +87,10 @@ stream = ExtResource( 3 )
 stream = ExtResource( 4 )
 
 [node name="Tween" type="Tween" parent="." index="4"]
+[connection signal="pressed" from="Control/Panel2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/Panel2/mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Control/controlCerita/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/controlCerita/next" to="." method="_on_next_pressed"]
 [connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
 [connection signal="finished" from="dialog" to="." method="_on_dialog_finished"]
 [connection signal="finished" from="dialog2" to="." method="_on_dialog2_finished"]

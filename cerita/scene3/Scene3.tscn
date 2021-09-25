@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
 [ext_resource path="res://asset/cerita/scene3/Scene_3.png" type="Texture" id=2]
@@ -6,39 +6,8 @@
 [ext_resource path="res://asset/cerita/scene3/Narasi_Scene3.wav" type="AudioStream" id=4]
 [ext_resource path="res://cerita/font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://cerita/dialog.tres" type="DynamicFont" id=6]
-
-[sub_resource type="Animation" id=1]
-resource_name = "scene3"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("narasi:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 9.5, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "animation"
-}, {
-"args": [  ],
-"method": "dialog"
-} ]
-}
+[ext_resource path="res://asset/cerita/scene3/01Berhalo_Scene3.wav" type="AudioStream" id=7]
+[ext_resource path="res://asset/cerita/scene3/02Pingai_Scene3.wav" type="AudioStream" id=8]
 
 [node name="Scene3" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -53,6 +22,8 @@ margin_top = 96.0
 margin_right = 1010.0
 margin_bottom = 221.0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.988235, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.996078, 0.996078, 0.996078, 1 )
 text = "\"Sekarang engkau yang
 memimpin Kerajaan Melayu Jambi,
 jagalah negeri ini dengan Baik\"
@@ -68,6 +39,8 @@ margin_top = 392.0
 margin_right = 699.0
 margin_bottom = 503.0
 custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.164706, 0.466667, 0.686275, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.972549, 0.972549, 1 )
 text = "\"Baik.. Perintah ayahanda, 
 ananda laksanakan\"
 "
@@ -76,10 +49,10 @@ __meta__ = {
 }
 
 [node name="Panel" parent="Control" index="3"]
-margin_left = 16.0
-margin_top = 40.0
-margin_right = 592.0
-margin_bottom = 160.0
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 672.0
+margin_bottom = 136.0
 
 [node name="Label" type="Label" parent="Control/Panel" index="0"]
 anchor_right = 1.0
@@ -97,14 +70,22 @@ __meta__ = {
 
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 4 )
-autoplay = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-autoplay = "scene3"
-anims/scene3 = SubResource( 1 )
+[node name="dialog" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 7 )
 
-[node name="Timer" type="Timer" parent="." index="3"]
+[node name="dialog2" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 0.5
 one_shot = true
 
-[node name="Tween" type="Tween" parent="." index="4"]
+[node name="Tween" type="Tween" parent="." index="5"]
+[connection signal="pressed" from="Control/Panel2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/Panel2/mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Control/controlCerita/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/controlCerita/next" to="." method="_on_next_pressed"]
+[connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
+[connection signal="finished" from="dialog" to="." method="_on_dialog_finished"]
+[connection signal="finished" from="dialog2" to="." method="_on_dialog2_finished"]

@@ -25,9 +25,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 872.0
 margin_top = 160.0
-margin_right = 1177.0
-margin_bottom = 193.0
+margin_right = -130.0
+margin_bottom = -499.0
 custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.211765, 0.627451, 0.854902, 1 )
 text = "“Mereka terus saja
  menyengsarakan rakyat ku..”"
 valign = 1
@@ -39,11 +40,12 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 936.0
-margin_top = 176.0
-margin_right = 1081.0
-margin_bottom = 171.0
+margin_left = 928.0
+margin_top = 168.0
+margin_right = -204.0
+margin_bottom = -523.0
 custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.294118, 0.815686, 0.917647, 1 )
 text = "“Hei... berhenti”"
 valign = 1
 __meta__ = {
@@ -55,10 +57,11 @@ modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 592.0
-margin_top = 224.0
-margin_right = 783.0
-margin_bottom = 219.0
+margin_top = 232.0
+margin_right = -504.0
+margin_bottom = -459.0
 custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 0.270588, 0.192157, 0.152941, 1 )
 text = "\"Tuan.. Maaf tuan..\""
 valign = 1
 __meta__ = {
@@ -69,13 +72,14 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 784.0
+margin_left = 800.0
 margin_top = 136.0
-margin_right = 1203.0
-margin_bottom = 207.0
+margin_right = -93.0
+margin_bottom = -491.0
 custom_fonts/font = ExtResource( 10 )
-text = "“Jangan kalian kirim upeti itu 
-ke kerajaan mataram, kenapa kita harus tunduk?,
+custom_colors/font_color = Color( 0.129412, 0.607843, 0.564706, 1 )
+text = "“Jangan kalian kirim upeti itu ke kerajaan 
+mataram,  kenapa kita harus tunduk?,
 kita punya mempunyai kedaulatan”"
 valign = 1
 __meta__ = {
@@ -83,10 +87,10 @@ __meta__ = {
 }
 
 [node name="Panel" parent="Control" index="5"]
-margin_left = 72.0
-margin_top = 32.0
-margin_right = 864.0
-margin_bottom = 128.0
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 888.0
+margin_bottom = 112.0
 
 [node name="narasi" type="Label" parent="Control/Panel" index="0"]
 anchor_right = 1.0
@@ -133,7 +137,6 @@ __meta__ = {
 
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 3 )
-autoplay = true
 
 [node name="narasi2" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 5 )
@@ -154,6 +157,10 @@ stream = ExtResource( 6 )
 stream = ExtResource( 12 )
 
 [node name="Tween" type="Tween" parent="." index="8"]
+[connection signal="pressed" from="Control/Panel2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/Panel2/mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Control/controlCerita/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/controlCerita/next" to="." method="_on_next_pressed"]
 [connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
 [connection signal="finished" from="narasi2" to="." method="_on_narasi2_finished"]
 [connection signal="finished" from="narasi3" to="." method="_on_narasi3_finished"]

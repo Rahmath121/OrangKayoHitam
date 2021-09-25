@@ -1,28 +1,17 @@
 extends Node2D
 
 func _ready():
-	Musiccontroller.Scene9()
 	Mute()
+	
+		
+func _on_TextureButton_pressed():
+	get_tree().change_scene("res://MainMenu.tscn")
 
-
-func _on_narasi_finished():
-	if Musiccontroller.mute == true:
-		pass
-	else:
-		yield(get_tree().create_timer(1),"timeout")
-		Change.change_scene("res://cerita/scene10/Scene10.tscn")
-
-
-
+	
 func _on_back_pressed():
 	$click.play()
-# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://MainMenu.tscn")
-	
 
-func _on_next_pressed():
-	$click.play()
-	Change.change_scene("res://cerita/scene10/Scene10.tscn")
 func Mute():
 	if Musiccontroller.mute == false:
 		$narasi.play()
@@ -42,7 +31,13 @@ func _on_mute_pressed():
 		Musiccontroller.mute = false
 		$Control/Panel2/mute.texture_normal = load("res://asset/button/mutenot.png")
 
+	
 
 
-func _on_prev_pressed():
-	Change.change_scene("res://cerita/scene8/Scene8.tscn")
+func _on_narasi_finished():
+	if Musiccontroller.mute == true:
+		pass
+	else:
+		yield(get_tree().create_timer(2),"timeout")
+		get_tree().change_scene("res://MainMenu.tscn")
+

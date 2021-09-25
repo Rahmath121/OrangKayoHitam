@@ -43,6 +43,7 @@ margin_top = 240.0
 margin_right = 433.0
 margin_bottom = 301.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.0784314, 0.431373, 0.478431, 1 )
 text = "“Engkau sangat sakti orang kayo hitam, 
 katakan apa keinginanmu”"
 __meta__ = {
@@ -56,6 +57,7 @@ margin_top = 216.0
 margin_right = 1252.0
 margin_bottom = 309.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.752941, 0.431373, 0.0862745, 1 )
 text = "“Aku tidak ingin ada pertempuran antara 
 kerajaan melayu jambi dan mataram, Namun-\" 
 "
@@ -70,6 +72,7 @@ margin_top = 216.0
 margin_right = 1268.0
 margin_bottom = 373.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.690196, 0.423529, 0.133333, 1 )
 text = "\"upeti yang paduka tetapkan 
 sangat menyengsarakan rakyat 
 kerajaan melayu jambi.
@@ -86,6 +89,7 @@ margin_top = 216.0
 margin_right = 1205.0
 margin_bottom = 373.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.678431, 0.368627, 0.0941176, 1 )
 text = "\"Aku tidak ingin paduka mengusik 
 kerajaan melayu jambi.
 
@@ -101,6 +105,7 @@ margin_top = 224.0
 margin_right = 441.0
 margin_bottom = 317.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.117647, 0.560784, 0.619608, 1 )
 text = "\"Melihat kesaktian mu, aku tak mampu 
 melawan, aku memutuskan berdamai, 
 dan menghapus upeti\". "
@@ -115,6 +120,7 @@ margin_top = 232.0
 margin_right = 513.0
 margin_bottom = 325.0
 custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.117647, 0.662745, 0.662745, 1 )
 text = "\"Keris ini ku berikan kepada mu 
 sebagai tanda janji ku.”"
 __meta__ = {
@@ -123,7 +129,6 @@ __meta__ = {
 
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 4 )
-autoplay = true
 
 [node name="dialog" type="AudioStreamPlayer" parent="." index="2"]
 stream = ExtResource( 8 )
@@ -135,6 +140,10 @@ stream = ExtResource( 7 )
 stream = ExtResource( 9 )
 
 [node name="Tween" type="Tween" parent="." index="5"]
+[connection signal="pressed" from="Control/Panel2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/Panel2/mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Control/controlCerita/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/controlCerita/next" to="." method="_on_next_pressed"]
 [connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
 [connection signal="finished" from="dialog" to="." method="_on_dialog_finished"]
 [connection signal="finished" from="dialog2" to="." method="_on_dialog2_finished"]

@@ -34,5 +34,8 @@ __meta__ = {
 
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource( 3 )
-autoplay = true
+[connection signal="pressed" from="Control/Panel2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/Panel2/mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Control/controlCerita/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/controlCerita/next" to="." method="_on_next_pressed"]
 [connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]

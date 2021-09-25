@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://cerita/cerita.tscn" type="PackedScene" id=1]
 [ext_resource path="res://asset/cerita/scene8/Scene_8.png" type="Texture" id=2]
 [ext_resource path="res://cerita/font.tres" type="DynamicFont" id=3]
-[ext_resource path="res://asset/cerita/scene8/Narasi_Scene8.wav" type="AudioStream" id=4]
+[ext_resource path="res://asset/cerita/scene8/narasi02.wav" type="AudioStream" id=4]
 [ext_resource path="res://asset/cerita/scene8/01PembuatKeris_Scene8_Lanjutan.wav" type="AudioStream" id=5]
 [ext_resource path="res://asset/cerita/scene8/02Hitam_Scene8_Lanjutan.wav" type="AudioStream" id=6]
 [ext_resource path="res://asset/cerita/scene8/01Hitam_Scene8.wav" type="AudioStream" id=7]
 [ext_resource path="res://cerita/scene8/Scene8.gd" type="Script" id=8]
 [ext_resource path="res://cerita/dialog.tres" type="DynamicFont" id=9]
+[ext_resource path="res://asset/cerita/scene8/narasi01.wav" type="AudioStream" id=10]
 
 [node name="Scene8" instance=ExtResource( 1 )]
 script = ExtResource( 8 )
@@ -28,7 +29,8 @@ anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Berita pembuatan keris sampai ke telinga orang kayo hitam. 
-Dengan seorang diri orang kayo hitam pergi ke mataram. "
+Dengan seorang diri orang kayo hitam pergi ke mataram.
+ Selama di perjalanan, orang kayo hitam menyamar sebagai pedagang. "
 align = 1
 valign = 1
 __meta__ = {
@@ -43,26 +45,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Selama di perjalanan, orang kayo hitam menyamar sebagai pedagang. 
-Di tengah perjalanan, orang kayo hitam melihat seseorang membuat 
-keris."
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="narasi3" type="Label" parent="Control/Panel" index="2"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 6
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Dan firasatnya pun muncul. Sepertinya ini 
-adalah tempat keris yang dipesan oleh raja mataram
- untuk menaklukan orang kayo hitam."
+text = "Di tengah perjalanan, orang kayo hitam melihat seseorang membuat 
+keris. dan firasatnya pun muncul. Sepertinya ini adalah tempat keris 
+yang dipesan oleh raja mataram  untuk menaklukan orang kayo hitam."
 align = 1
 valign = 1
 __meta__ = {
@@ -76,19 +61,27 @@ margin_top = 56.0
 margin_right = 705.0
 margin_bottom = 160.0
 custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.654902, 0.505882, 0.0980392, 1 )
 text = "“permisi tuan, saya hendak menawarkan 
 dagangan dari pulau seberang”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="dialog2" type="Label" parent="Control" index="3"]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 8.0
-margin_top = 160.0
+margin_top = 200.0
 margin_right = 555.0
-margin_bottom = 280.0
+margin_bottom = 293.0
 custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.898039, 0.372549, 0.168627, 1 )
 text = "“Pergilah...aku tak ingin membeli dagangan mu, 
 aku sedang sibuk membuat keris pesanan raja mataram
  untuk menaklukan seseorang dari kerajaan melayu jambi”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="dialog3" type="Label" parent="Control" index="4"]
 modulate = Color( 1, 1, 1, 0 )
@@ -97,24 +90,35 @@ margin_top = 88.0
 margin_right = 671.0
 margin_bottom = 208.0
 custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.780392, 0.152941, 0.152941, 1 )
 text = "“Akan ku rebut keris itu darimu, 
 Aku lah orang kayo hitam”"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="narasi" type="AudioStreamPlayer" parent="." index="1"]
-stream = ExtResource( 4 )
-autoplay = true
+stream = ExtResource( 10 )
 
-[node name="dialog" type="AudioStreamPlayer" parent="." index="2"]
+[node name="narasi2" type="AudioStreamPlayer" parent="." index="2"]
+stream = ExtResource( 4 )
+
+[node name="dialog" type="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 7 )
 
-[node name="dialog2" type="AudioStreamPlayer" parent="." index="3"]
+[node name="dialog2" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 5 )
 
-[node name="dialog3" type="AudioStreamPlayer" parent="." index="4"]
+[node name="dialog3" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource( 6 )
 
-[node name="Tween" type="Tween" parent="." index="5"]
+[node name="Tween" type="Tween" parent="." index="6"]
+[connection signal="pressed" from="Control/Panel2/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Control/Panel2/mute" to="." method="_on_mute_pressed"]
+[connection signal="pressed" from="Control/controlCerita/prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/controlCerita/next" to="." method="_on_next_pressed"]
 [connection signal="finished" from="narasi" to="." method="_on_narasi_finished"]
+[connection signal="finished" from="narasi2" to="." method="_on_narasi2_finished"]
 [connection signal="finished" from="dialog" to="." method="_on_dialog_finished"]
 [connection signal="finished" from="dialog2" to="." method="_on_dialog2_finished"]
 [connection signal="finished" from="dialog3" to="." method="_on_dialog3_finished"]

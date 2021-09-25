@@ -1,87 +1,32 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://asset/cerita/scene1/scene_1-.png" type="Texture" id=1]
 [ext_resource path="res://cerita/scene1/Scene1.gd" type="Script" id=2]
 [ext_resource path="res://asset/audio/scene1/Narasi_Scene1.wav" type="AudioStream" id=3]
+[ext_resource path="res://asset/button/quit.png" type="Texture" id=4]
 [ext_resource path="res://asset/matching/assets/fonts/Nunito-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://asset/button/mutenot.png" type="Texture" id=6]
+[ext_resource path="res://asset/button/next.png" type="Texture" id=7]
+[ext_resource path="res://asset/audio/game-click.wav" type="AudioStream" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
-outline_size = 2
-outline_color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
-font_data = ExtResource( 5 )
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.87451, 0.87451, 0.87451, 0.909804 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.658824, 0.631373, 0.631373, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="DynamicFont" id=2]
-size = 30
-outline_size = 2
+size = 18
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "New Anim"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Narasi:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 29.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Narasi:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 10.2, 19.4, 28.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "dialog1"
-}, {
-"args": [  ],
-"method": "dialog1"
-}, {
-"args": [  ],
-"method": "next"
-} ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 9.7, 18.9 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "animation"
-}, {
-"args": [  ],
-"method": "animation"
-} ]
-}
+[sub_resource type="Theme" id=3]
+Panel/styles/panel = null
 
 [node name="Scene1" type="Node2D"]
 script = ExtResource( 2 )
@@ -101,41 +46,133 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control"]
-margin_left = 600.0
-margin_top = 72.0
-margin_right = 1258.0
-margin_bottom = 583.0
-custom_fonts/font = SubResource( 1 )
-text = "Kisah Orang Kayo Hitam, Pada abad Ke 14, 
-ada sebuah Kerajaan 
-yang bernama Kerajaan Melayu Jambi,"
+[node name="Panel" type="Panel" parent="Control"]
+margin_left = 160.0
+margin_top = 32.0
+margin_right = 1112.0
+margin_bottom = 144.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pada abad ke 14, ada sebuah kerajaan yang bernama kerajaan melayu jambi.
+ Kerajaan ini dipimpin oleh seorang putri keturunan dari pagaruyung yang bernama putri selaras pinang masak.
+ Putri selaras pinang masak menikah dengan saudagar dari turki yang bergelar Datuk Paduko Berhalo."
+align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="Control"]
-visible = false
-margin_left = 632.0
-margin_top = 176.0
-margin_right = 1117.0
-margin_bottom = 440.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.980392, 0.968627, 0.968627, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-text = "Kisah Orang Kayo Hitam,
-Pada Abad ke-14,
-ada sebuah Kerajaan yang Benama
-Kerajaan Melayu Jambi."
-valign = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_right = 1.0
+margin_right = 1280.0
+margin_bottom = 152.0
+theme = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_right = 1280.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 350
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/HBoxContainer"]
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_right = 193.0
+margin_bottom = 74.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer/HBoxContainer"]
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_left = 543.0
+margin_right = 736.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="Control/VBoxContainer/HBoxContainer"]
+modulate = Color( 0.972549, 0.937255, 0.937255, 1 )
+margin_left = 1086.0
+margin_right = 1280.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 78.0
+margin_right = 1280.0
+margin_bottom = 152.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_right = 392.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_left = 396.0
+margin_right = 1079.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.74
+expand = true
+
+[node name="TextureRect3" type="TextureButton" parent="Control/VBoxContainer/HBoxContainer2"]
+margin_left = 1083.0
+margin_right = 1280.0
+margin_bottom = 74.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource( 7 )
+expand = true
+stretch_mode = 5
 
 [node name="Narasi" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-autoplay = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/New Anim" = SubResource( 3 )
-anims/dialog = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/TextureButton4" to="." method="_on_TextureButton4_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer2/TextureRect3" to="." method="_on_TextureRect3_pressed"]
+[connection signal="finished" from="Narasi" to="." method="_on_Narasi_finished"]
